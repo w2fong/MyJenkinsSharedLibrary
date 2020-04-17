@@ -10,7 +10,7 @@ def getUpstreamJob() {
 }
 
 def setUpstreamJobInDesc() {
-    def Upstream_Build = readFile('upstreamBuildInfo.txt')
-    echo "${Upstream_Build}"
-    currentBuild.displayName = "${Upstream_Build}"
+    def upstreamBuild = readFile('upstreamBuildInfo.txt')
+    echo upstreamBuild
+    currentBuild.displayName = upstreamBuild
 }
