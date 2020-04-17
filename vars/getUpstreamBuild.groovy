@@ -6,6 +6,10 @@ def readUpstreamJob(userToken) {
 
 def getUpstreamJob() {
     def Upstream_Build = readfile('upstreamBuildInfo.txt')
-    //jsonParse(readFile('xyz.json')) 
-    return Upstream_Build
+    //jsonParse(readFile('xyz.json'))     
+    echo Upstream_Build
+}
+
+def setUpstreamJobInDesc() {
+    currentBuild.displayName = readfile('upstreamBuildInfo.txt')  
 }
