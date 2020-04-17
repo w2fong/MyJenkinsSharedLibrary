@@ -1,0 +1,5 @@
+def call(file) {
+    def upstreamBuild = readFile("${file}")
+    echo upstreamBuild
+    currentBuild.displayName = upstreamBuild
+}
