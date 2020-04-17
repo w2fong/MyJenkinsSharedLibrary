@@ -13,7 +13,7 @@ def setUpstreamJobInDesc(String fileName) {
 }
 
 def testJson(String fileName) {
-    def jsonSlurper = new JsonSlurper()
+    def jsonSlurper = new groovy.json.JsonSlurperClassic()
     def jsonObject = jsonSlurper.parseText(readFile("${fileName}"))
     currentBuild.displayName = jsonObject.actions[0].causes[0].upstreamProject
 }
