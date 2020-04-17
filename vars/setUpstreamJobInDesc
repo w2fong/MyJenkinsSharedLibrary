@@ -1,5 +1,5 @@
-def call(file) {
-    def upstreamBuild = readFile("${file}")
+def call(String fileName) {
+    def upstreamBuild = readFile("${fileName}")
     echo upstreamBuild
     currentBuild.displayName = upstreamBuild
 }
