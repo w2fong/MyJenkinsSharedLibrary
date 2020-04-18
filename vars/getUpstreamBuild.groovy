@@ -14,6 +14,6 @@ def setUpstreamJobInDesc(String fileName) {
 
 def testJson(String fileName) {
     def upstreamProject = sh "jq '.actions[0].causes[0].upstreamProject' ${fileName}"
-    print(upstreamProject)
-    currentBuild.displayName = upstreamProject
+    echo "${upstreamProject}"
+    currentBuild.displayName = "${upstreamProject}"
 }
