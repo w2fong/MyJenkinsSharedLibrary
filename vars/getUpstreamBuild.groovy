@@ -23,7 +23,7 @@ def testGetUpstreamDetails(String userToken, String jobFileName, String upstream
     echo "UPSTREAM_BUILD_NUMBER: ${env.UPSTREAM_BUILD_NUMBER}"
     
     echo "FULL_UPSTREAM_URL: ${env.JENKINS_URL}/${env.UPSTREAM_URL}/${env.UPSTREAM_BUILD_NUMBER}/api/json"
-    sh "curl -s -X GET -u ${userToken} ${env.JENKINS_URL}/${env.UPSTREAM_URL}/${env.BUILD_NUMBER}/api/json > ${upstreamFileName} "
+    sh "curl -s -X GET -u ${userToken} ${env.JENKINS_URL}/${env.UPSTREAM_URL}/${env.UPSTREAM_BUILD_NUMBER}/api/json > ${upstreamFileName} "
     
     env.UPSTREAM_PARAM_VERSION = sh(script: "jq '.actions[0].parameters[1].value' ${upstreamFileName}", , returnStdout: true).trim()
     echo "UPSTREAM_PARAM_VERSION: ${env.UPSTREAM_PARAM_VERSION}"
