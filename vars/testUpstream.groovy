@@ -1,9 +1,12 @@
 def call(String userToken, String jobFileName, String upstreamFileName) {
     echo "Getting Upstream Build Info"
 
-    env.UPSTREAM_PROJECT = "CCV/richard-test"
-    env.UPSTREAM_URL = "job/CCV/job/richard-test"
-    env.UPSTREAM_BUILD_NUMBER = 83
+//    env.UPSTREAM_PROJECT = "CCV/richard-test"
+//    env.UPSTREAM_URL = "job/CCV/job/richard-test"
+//    env.UPSTREAM_BUILD_NUMBER = 83
+    env.UPSTREAM_PROJECT = "CCV/Workspace External Helper UAT"
+    env.UPSTREAM_URL = "job/CCV/job/Workspace%20External%20Helper%20UAT/"
+    env.UPSTREAM_BUILD_NUMBER = 21    
 
     echo "Getting Upstream Build Parameters"    
     echo "UPSTREAM_PROJECT: ${env.UPSTREAM_PROJECT}"
