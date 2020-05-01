@@ -13,9 +13,9 @@ def testGetUpstreamDetails(String userToken, String jobFileName, String upstream
     echo "Getting Upstream Build Info"
     sh "curl -s -X GET -u ${userToken} ${env.JOB_URL}/${env.BUILD_NUMBER}/api/json > ${jobFileName} "
     
-    env.UPSTREAM_PROJECT = sh(script: "jq '.actions[0].causes[0].upstreamProject' ${jobFileName}", , returnStdout: true).trim()
-    env.UPSTREAM_URL = sh(script: "jq '.actions[0].causes[0].upstreamUrl' ${jobFileName}", , returnStdout: true).trim()
-    env.UPSTREAM_BUILD_NUMBER = sh(script: "jq '.actions[0].causes[0].upstreamBuild' ${jobFileName}", , returnStdout: true).trim()
+    env.UPSTREAM_PROJECT = sh(script: "jq -r '.actions[0].causes[0].upstreamProject' ${jobFileName}", , returnStdout: true).trim()
+    env.UPSTREAM_URL = sh(script: "jq -r '.actions[0].causes[0].upstreamUrl' ${jobFileName}", , returnStdout: true).trim()
+    env.UPSTREAM_BUILD_NUMBER = sh(script: "jq -r '.actions[0].causes[0].upstreamBuild' ${jobFileName}", , returnStdout: true).trim()
 
     echo "Getting Upstream Build Parameters"    
     echo "UPSTREAM_PROJECT: ${env.UPSTREAM_PROJECT}"
