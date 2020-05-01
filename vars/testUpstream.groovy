@@ -1,15 +1,14 @@
 def call(String userToken, String jobFileName, String upstreamFileName) {
     echo "Getting Upstream Build Info"
-    sh "curl -s -X GET -u ${userToken} ${env.JOB_URL}/${env.BUILD_NUMBER}/api/json > ${jobFileName} "
-    
-    env.UPSTREAM_PROJECT = sh(script: "jq '.actions[0].causes[0].upstreamProject' ${jobFileName}", , returnStdout: true).trim()
-    env.UPSTREAM_URL = sh(script: "jq '.actions[0].causes[0].upstreamUrl' ${jobFileName}", , returnStdout: true).trim()
-    env.UPSTREAM_BUILD_NUMBER = sh(script: "jq '.actions[0].causes[0].upstreamBuild' ${jobFileName}", , returnStdout: true).trim()
+
+    env.UPSTREAM_PROJECT = "CCV/richard-test"
+    env.UPSTREAM_URL = "job/CCV/job/richard-test"
+    env.UPSTREAM_BUILD_NUMBER = 76
 
     echo "Getting Upstream Build Parameters"    
     echo "UPSTREAM_PROJECT: ${env.UPSTREAM_PROJECT}"
-    echo "UPSTREAM_URL: ${env.UPSTREAM_URL}"
-    echo "UPSTREAM_BUILD_NUMBER: ${env.UPSTREAM_BUILD_NUMBER}"
+    echo "UPSTREAM_URL: job/CCV/job/richard-test"
+    echo "UPSTREAM_BUILD_NUMBER: 76"
     
     echo "FULL_UPSTREAM_URL: ${env.JENKINS_URL}/${env.UPSTREAM_URL}/${env.UPSTREAM_BUILD_NUMBER}/api/json"
     sh "curl -s -X GET -u ${userToken} ${env.JENKINS_URL}/${env.UPSTREAM_URL}/${env.UPSTREAM_BUILD_NUMBER}/api/json > ${upstreamFileName} "
