@@ -13,7 +13,7 @@ def call(String userToken, String jobFileName, String upstreamFileName) {
     echo "FULL_UPSTREAM_URL: ${env.JENKINS_URL}/${env.UPSTREAM_URL}/${env.UPSTREAM_BUILD_NUMBER}/api/json"
     sh "curl -s -X GET -u ${userToken} ${env.JENKINS_URL}/${env.UPSTREAM_URL}/${env.UPSTREAM_BUILD_NUMBER}/api/json > ${upstreamFileName} "
     
-    env.UPSTREAM_PARAM_VERSION = sh(script: "jq '.actions[0].parameters[] | select(.name=="version") | .value' ${upstreamFileName}", , returnStdout: true).trim()
+    env.UPSTREAM_PARAM_VERSION = sh(script: "jq '.actions[0].parameters[] | select(.name==\"version\") | .value' ${upstreamFileName}", , returnStdout: true).trim()
     echo "UPSTREAM_PARAM_VERSION: ${env.UPSTREAM_PARAM_VERSION}"
 
     currentBuild.displayName = "${env.UPSTREAM_PROJECT} - ${env.UPSTREAM_PARAM_VERSION}"
