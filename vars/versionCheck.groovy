@@ -35,7 +35,7 @@ def call(String appVersion, String appName ) {
             case "KernelStateful":
                 return true
             default:
-                statement #Default 
+                return true
         }
     }
 }
