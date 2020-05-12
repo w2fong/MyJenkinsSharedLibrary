@@ -1,16 +1,8 @@
 def call(String appVersion, String appName ) {
     echo "Getting Application version ${appName}"
     script {
-        if ("${appVersion}" == "5.27.0.2" ) {
-            return false
-        }
-        else {
-            return true
-        }
-        
-/*
-        if (${appName} == "ExternalHelperService" ) {
-          if (${appVersion} == "5.27.0.2" ) {
+        if ("${appName}" == "ExternalHelperService" ) {
+          if ("${appVersion}" == "5.27.0.2" ) {
             return false
           }
           else {
@@ -20,6 +12,5 @@ def call(String appVersion, String appName ) {
         else {
           return true
         }
-*/
     }        
 }
